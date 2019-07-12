@@ -1,53 +1,51 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+// Material UI
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Divider from "@material-ui/core/Divider";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Home from "@material-ui/icons/Home";
 import Code from "@material-ui/icons/Code";
-import ShareIcon from "@material-ui/icons/Share";
 import Settings from "@material-ui/icons/Settings";
 import Mail from "@material-ui/icons/Mail";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // Screens
 import HomeScreen from "../screens/HomeScreen";
+import SkillsScreen from "./../screens/SkillsScreen";
+import ProfileScreen from "./../screens/ProfileScreen";
+import ContactScreen from "./../screens/ContactScreen";
 
-const url = '/';
+const url = "/";
 
 const routes = [
   {
-    path: url,
-    exact: true,
+    path: url + "profile",
+    main: () => <ProfileScreen />
+  },
+  {
+    path: url + url,
     main: () => <HomeScreen />
   },
   {
-    path: url + 'recetas',
-    main: () => <HomeScreen />
+    path: url + "skills",
+    main: () => <SkillsScreen />
   },
   {
-    path: url + 'social',
-    main: () => <HomeScreen />
+    path: url + "contact",
+    main: () => <ContactScreen />
   },
   {
-    path: url + 'calendario',
-    main: () => <HomeScreen />
-  },
-  {
-    path: url + 'inventario',
-    main: () => <HomeScreen />
-  },
-  {
-    path: url + 'ajustes',
+    path: url + "settings",
     main: () => <HomeScreen />
   }
 ];
@@ -68,50 +66,71 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="NavBarContainer" onClick={() => {
-          if (this.state.open)
-            this.handlingDrawer();
-        }}>
-          <AppBar color="secondary" position="fixed">
+        <div
+          className="NavBarContainer"
+          onClick={() => {
+            if (this.state.open) this.handlingDrawer();
+          }}
+        >
+          <AppBar
+            color="secondary"
+            position="fixed"
+            style={{
+              background: "linear-gradient(45deg, #FE6B8B 10%, #FF8E53 100%)",
+              margin: 12,
+              borderRadius: 0
+            }}
+          >
             <Toolbar>
               <IconButton
                 color="inherit"
                 aria-label="Menu"
                 onClick={this.handlingDrawer}
               >
-                <MenuIcon />
+                <MenuIcon
+                  style={{
+                    borderRight: "0px solid black",
+                    borderRadius: 5,
+                    color: "black",
+                    fontSize: 30
+                  }}
+                />
               </IconButton>
-              <Typography styles={{ flexGrow: 1 }} variant="h5" color="inherit">
-                Logo Marcos Bustamante Mateo
-              </Typography>
+              <Typography
+                styles={{ flexGrow: 1, alignItems: "center" }}
+                variant="h5"
+                color="inherit"
+              />
 
+              <Link to={url}>
+                <img
+                  src={require("./../logo.png")}
+                  alt="marcos bustamante mateo logo"
+                  style={{ maxHeight: 40, borderRadius: 50 }}
+                />
+              </Link>
             </Toolbar>
           </AppBar>
 
-          <SwipeableDrawer 
-            variant="persistent" 
-            anchor="left" 
-            open={this.state.open} 
-            onOpen={() => {}} 
+          <SwipeableDrawer
+            variant="temporary"
+            anchor=""
+            open={this.state.open}
+            onOpen={() => {}}
             onClose={() => {}}
             swipeAreaWidth={400}
             hysteresis={0.8}
             disableDiscovery={true}
           >
-            <div>
-              <IconButton>
-                <ChevronLeftIcon />
-              </IconButton>
-            </div>
-            <Divider />
-
             <List>
-              <ListItem button>
-                <ListItemIcon>
-                  <AccountCircle />
-                </ListItemIcon>
-                <ListItemText primary={"Profile"} />
-              </ListItem>
+              <Link to={url + "profile"} style={{ textDecoration: "none" }}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <AccountCircle />
+                  </ListItemIcon>
+                  <ListItemText primary={"Profile"} />
+                </ListItem>
+              </Link>
             </List>
 
             <Divider />
@@ -125,7 +144,7 @@ class App extends Component {
                 </ListItem>
               </Link>
 
-              <Link to={url + "recetas"} style={{ textDecoration: "none" }}>
+              <Link to={url + "skills"} style={{ textDecoration: "none" }}>
                 <ListItem button>
                   <ListItemIcon>
                     <Code />
@@ -134,7 +153,7 @@ class App extends Component {
                 </ListItem>
               </Link>
 
-              <Link to={url + "inventario"} style={{ textDecoration: "none" }}>
+              <Link to={url + "contact"} style={{ textDecoration: "none" }}>
                 <ListItem button>
                   <ListItemIcon>
                     <Mail />
@@ -146,28 +165,16 @@ class App extends Component {
 
             <Divider />
             <List>
-              <Link to={url + "ajustes"} style={{ textDecoration: "none" }}>
+              <Link to={url + "settings"} style={{ textDecoration: "none" }}>
                 <ListItem button>
                   <ListItemIcon>
                     <Settings />
                   </ListItemIcon>
-                  <ListItemText primary={"Ajustes"} />
+                  <ListItemText primary={"Settings"} />
                 </ListItem>
               </Link>
-
-              <ListItem button>
-                <ListItemIcon>
-                  <ShareIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Compartir"} />
-              </ListItem>
             </List>
           </SwipeableDrawer>
-
-          <br />
-          <br />
-          <br />
-          <br />
 
           {routes.map((route, index) => (
             <Route

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./components/Navbar";
+import SharedFloatButton from './components/SharedFloatButton';
+import ErrorHandler from "./components/ErrorHandler";
 
 class App extends Component {
   constructor() {
@@ -16,8 +18,11 @@ class App extends Component {
 
 
     return (
-        <div className="App" styles={{ flexGrow: 1 }}>
+        <div className="App">
+          <ErrorHandler>
             <Navbar></Navbar>
+            <SharedFloatButton></SharedFloatButton>
+          </ErrorHandler>
         </div>
     );
   }

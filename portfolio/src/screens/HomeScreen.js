@@ -1,23 +1,15 @@
-import React, { Component }  from 'react';
-import ImgMediaCard from '../components/Card';
+import React, { Component } from "react";
 
 class HomeScreen extends Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props) {
-        super(props);
-    
-        this.state = {};
-    }
+    this.state = {};
+  }
 
-    render() {
-
-        return (
-            <div className='HomeContainer'>
-                <h2>Hello world</h2>
-                <ImgMediaCard></ImgMediaCard>
-            </div>
-        );
-    }
+  render() {
+    return <div className="Home ScreenContainer">Home</div>;
+  }
 }
 
 export default HomeScreen;

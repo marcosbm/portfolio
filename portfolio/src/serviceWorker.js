@@ -31,6 +31,32 @@ export function register(config) {
       return;
     }
 
+    const CACHE_NAME = 'mbm';
+    const URLS_TO_CACHE = [
+      '/',
+      '/index.html',
+      '.'
+    ];
+
+    window.addEventListener('install', event => {
+      event.waitUntil(
+        caches.open(CACHE_NAME)
+          .then(cache => {
+            return cache.addAll(URLS_TO_CACHE);
+          })
+      );
+    });
+
+    window.addEventListener('fetch', event => {
+      event.respondWith(
+        caches.match(event.request)
+          .then(response => {
+              return response ? response : fetch(event.request);
+          }
+        )
+      );
+    });
+
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
@@ -133,3 +159,5 @@ export function unregister() {
     });
   }
 }
+
+register();
