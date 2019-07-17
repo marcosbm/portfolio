@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./components/Navbar";
-import SharedFloatButton from './components/SharedFloatButton';
-import ErrorHandler from "./components/ErrorHandler";
+import FloatButtons from './components/FloatButtons';
 
 class App extends Component {
   constructor() {
@@ -19,10 +18,8 @@ class App extends Component {
 
     return (
         <div className="App">
-          <ErrorHandler>
             <Navbar></Navbar>
-            <SharedFloatButton></SharedFloatButton>
-          </ErrorHandler>
+            <FloatButtons></FloatButtons>
         </div>
     );
   }

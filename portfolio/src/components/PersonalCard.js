@@ -15,10 +15,10 @@ import Typography from '@material-ui/core/Typography';
                     <img src={ require('./../photo.png') } alt="marcos bustamante mateo logo" style={{ maxHeight: 150, borderRadius: '50%', marginTop: 10 }} />
                     <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        HELLO WORLD!
+                        Marcos Bustamante Mateo
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p" style={{ textIndent: '1em' }}>
-                        I am Marcos Bustamante, Software developer. Based in Spain with a great focus on creating clean & user friendly code. <br/>
+                        I am Software developer. Based in Spain with a great focus on creating clean & user friendly code. <br/>
                         Let me show you more about me.
                     </Typography>
                     </CardContent>

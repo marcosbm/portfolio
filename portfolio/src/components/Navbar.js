@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Media from "react-media";
 
 // Material UI
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -50,12 +50,47 @@ const routes = [
   }
 ];
 
+const bar = {
+  background: "linear-gradient(45deg, #FE6B8B 10%, #FF8E53 100%)",
+  margin: 0,
+  borderRadius: 0,
+  opacity: 0,
+  padding: 5
+};
+
+const menuIcon = {
+  borderRadius: 5,
+  color: "rgb(0, 0, 0)",
+  fontSize: 35
+};
+
+const opacityTransitionBar = {
+  opacity: 0.9,
+  transition: "opacity 2s"
+};
+
+const route = { opacity: 0 };
+
+const opacityTransitionRoute = {
+  opacity: 1,
+  transition: "opacity 5s"
+};
+
+const logo = {
+  maxHeight: 45,
+  borderRadius: 50
+};
+
+const link = { textDecoration: "none" };
+
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      open: false
+      open: false,
+      barStyle: bar,
+      routeStyle: route
     };
   }
 
@@ -63,7 +98,29 @@ class App extends Component {
     this.setState({ open: !this.state.open });
   };
 
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        barStyle: {
+          ...this.state.barStyle,
+          ...opacityTransitionBar
+        }
+      });
+    }, 0);
+
+    setInterval(() => {
+      this.setState({
+        routeStyle: {
+          ...this.state.routeStyle,
+          ...opacityTransitionRoute
+        }
+      });
+    }, 1000);
+  }
+
   render() {
+    const { barStyle, routeStyle } = this.state;
+
     return (
       <Router>
         <div
@@ -72,58 +129,42 @@ class App extends Component {
             if (this.state.open) this.handlingDrawer();
           }}
         >
-          <AppBar
-            color="secondary"
-            position="fixed"
-            style={{
-              background: "linear-gradient(45deg, #FE6B8B 10%, #FF8E53 100%)",
-              margin: 12,
-              borderRadius: 0
-            }}
-          >
+          <AppBar color="secondary" position="fixed" style={barStyle}>
             <Toolbar>
               <IconButton
                 color="inherit"
                 aria-label="Menu"
                 onClick={this.handlingDrawer}
               >
-                <MenuIcon
-                  style={{
-                    borderRight: "0px solid black",
-                    borderRadius: 5,
-                    color: "black",
-                    fontSize: 30
-                  }}
-                />
+                <MenuIcon style={menuIcon} />
               </IconButton>
-              <Typography
-                styles={{ flexGrow: 1, alignItems: "center" }}
-                variant="h5"
-                color="inherit"
-              />
 
               <Link to={url}>
                 <img
                   src={require("./../logo.png")}
                   alt="marcos bustamante mateo logo"
-                  style={{ maxHeight: 40, borderRadius: 50 }}
+                  style={logo}
                 />
               </Link>
+              <Media query="(max-width: 599px)">
+                {matches =>
+                  matches ? null : (
+                    <h4 style={{ margin: "auto" }}>Marcos Bustamante Mateo</h4>
+                  )
+                }
+              </Media>
             </Toolbar>
           </AppBar>
 
-          <SwipeableDrawer
+          <Drawer
             variant="temporary"
-            anchor=""
+            anchor="left"
             open={this.state.open}
-            onOpen={() => {}}
             onClose={() => {}}
-            swipeAreaWidth={400}
-            hysteresis={0.8}
-            disableDiscovery={true}
+            transitionDuration={500}
           >
             <List>
-              <Link to={url + "profile"} style={{ textDecoration: "none" }}>
+              <Link to={url + "profile"} style={link}>
                 <ListItem button>
                   <ListItemIcon>
                     <AccountCircle />
@@ -135,7 +176,7 @@ class App extends Component {
 
             <Divider />
             <List>
-              <Link to={url} style={{ textDecoration: "none" }}>
+              <Link to={url} style={link}>
                 <ListItem button>
                   <ListItemIcon>
                     <Home />
@@ -144,7 +185,7 @@ class App extends Component {
                 </ListItem>
               </Link>
 
-              <Link to={url + "skills"} style={{ textDecoration: "none" }}>
+              <Link to={url + "skills"} style={link}>
                 <ListItem button>
                   <ListItemIcon>
                     <Code />
@@ -153,7 +194,7 @@ class App extends Component {
                 </ListItem>
               </Link>
 
-              <Link to={url + "contact"} style={{ textDecoration: "none" }}>
+              <Link to={url + "contact"} style={link}>
                 <ListItem button>
                   <ListItemIcon>
                     <Mail />
@@ -165,7 +206,7 @@ class App extends Component {
 
             <Divider />
             <List>
-              <Link to={url + "settings"} style={{ textDecoration: "none" }}>
+              <Link to={url + "settings"} style={link}>
                 <ListItem button>
                   <ListItemIcon>
                     <Settings />
@@ -174,17 +215,14 @@ class App extends Component {
                 </ListItem>
               </Link>
             </List>
-          </SwipeableDrawer>
+            <Divider />
+          </Drawer>
 
-          {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              component={route.main}
-              onClick={this.handlingDrawer}
-            />
-          ))}
+          <div style={routeStyle}>
+            {routes.map((route, index) => (
+              <Route key={index} path={route.path} component={route.main} />
+            ))}
+          </div>
         </div>
       </Router>
     );

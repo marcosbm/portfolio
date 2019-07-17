@@ -13,14 +13,42 @@ import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
 import ShareButtons from "./ShareButtons";
 
-class SharedFloatButton extends Component {
+const opacityTransition = {
+  opacity: 1,
+  transition: "opacity 2s"
+};
+
+const floatButton = {
+  position: "fixed",
+  left: "auto",
+  top: "auto",
+  margin: "0",
+  right: 20,
+  background: "linear-gradient(45deg, #FE6B8B 45%, #FF8E53 100%)",
+  borderRadius: 30,
+  opacity: 0
+};
+
+const contactButton = {
+  bottom: 90
+};
+
+const shareButton = {
+  bottom: 20
+};
+
+const modal = { textAlign: "center" };
+
+class FloatButtons extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       tootlTipVisible: false,
       mobile: false,
-      open: false
+      open: false,
+      contactButtonStyle: { ...floatButton, ...contactButton },
+      shareButtonStyle: { ...floatButton, ...shareButton }
     };
   }
 
@@ -43,18 +71,41 @@ class SharedFloatButton extends Component {
     this.setState({ open: false });
   };
 
+  detectDeviceType = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+      ? true
+      : false;
+  };
+
   componentDidMount() {
     this.setState({
-      mobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-        ? true
-        : false
+      mobile: this.detectDeviceType()
     });
+
+    setInterval(() => {
+      this.setState({
+        contactButtonStyle: {
+          ...this.state.contactButtonStyle,
+          ...opacityTransition
+        },
+        shareButtonStyle: {
+          ...this.state.shareButtonStyle,
+          ...opacityTransition
+        }
+      });
+    }, 0);
   }
 
   render() {
-    const { tootlTipVisible, mobile, open } = this.state;
+    const {
+      tootlTipVisible,
+      mobile,
+      open,
+      contactButtonStyle,
+      shareButtonStyle
+    } = this.state;
 
     return (
       <div>
@@ -71,16 +122,7 @@ class SharedFloatButton extends Component {
               this.handleToolTip(false);
               this.handleOpenShare();
             }}
-            style={{
-              position: "fixed",
-              left: "auto",
-              top: "auto",
-              margin: "0",
-              right: 20,
-              bottom: 20,
-              background: "linear-gradient(45deg, #FE6B8B 45%, #FF8E53 100%)",
-              borderRadius: 30
-            }}
+            style={shareButtonStyle}
           >
             <ShareIcon />
           </Fab>
@@ -99,16 +141,7 @@ class SharedFloatButton extends Component {
               this.handleToolTip(false);
               this.handleContact();
             }}
-            style={{
-              position: "fixed",
-              left: "auto",
-              top: "auto",
-              margin: "0",
-              right: 20,
-              bottom: 90,
-              background: "linear-gradient(45deg, #FE6B8B 45%, #FF8E53 100%)",
-              borderRadius: 30
-            }}
+            style={contactButtonStyle}
           >
             {mobile ? <CallIcon /> : <EmailIcon />}
           </Fab>
@@ -119,14 +152,14 @@ class SharedFloatButton extends Component {
           keepMounted
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
-          style={{ textAlign: 'center' }}
+          style={modal}
         >
           <DialogTitle id="alert-dialog-slide-title">{"Share via"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              <div>
+              <span>
                 <ShareButtons />
-              </div>
+              </span>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -140,4 +173,4 @@ class SharedFloatButton extends Component {
   }
 }
 
-export default SharedFloatButton;
+export default FloatButtons;
