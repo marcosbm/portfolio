@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Spinner from "../components/Spinner";
 import Media from "react-media";
+import backgroundHome from './../backgroundHome.jpg';
 
 const container = {
   backgroundImage:
-    "url(https://img.fotocommunity.com/plaza-espaa-sunset-sevilla-2cdff009-9e8f-4e44-b9c3-d5d1e9dcde95.jpg?height=1080)",
+    "url(" + backgroundHome + ")",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center center",
   backgroundAttachment: "fixed",

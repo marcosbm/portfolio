@@ -98,6 +98,38 @@ class App extends Component {
     this.setState({ open: !this.state.open });
   };
 
+  handleTransition = () => {
+    const {
+      routeStyle: { opacity }
+    } = this.state;
+
+    if (opacity === 0) {
+      this.handleSetStylesTransition(true);
+    } else if (opacity === 1) {
+      this.handleSetStylesTransition(false);
+      this.handleSetStylesTransition(true);
+    }
+  };
+
+  handleSetStylesTransition = interval => {
+    if (interval === true) {
+      setInterval(() => {
+        this.setState({
+          routeStyle: {
+            ...this.state.routeStyle,
+            ...opacityTransitionRoute
+          }
+        });
+      }, 1000);
+    } else {
+      this.setState({
+        routeStyle: {
+          opacity: 0
+        }
+      });
+    }
+  };
+
   componentDidMount() {
     setInterval(() => {
       this.setState({
@@ -107,15 +139,7 @@ class App extends Component {
         }
       });
     }, 0);
-
-    setInterval(() => {
-      this.setState({
-        routeStyle: {
-          ...this.state.routeStyle,
-          ...opacityTransitionRoute
-        }
-      });
-    }, 1000);
+    this.handleTransition();
   }
 
   render() {
@@ -164,7 +188,11 @@ class App extends Component {
             transitionDuration={500}
           >
             <List>
-              <Link to={url + "profile"} style={link}>
+              <Link
+                onClick={this.handleTransition}
+                to={url + "profile"}
+                style={link}
+              >
                 <ListItem button>
                   <ListItemIcon>
                     <AccountCircle />
@@ -176,7 +204,7 @@ class App extends Component {
 
             <Divider />
             <List>
-              <Link to={url} style={link}>
+              <Link onClick={this.handleTransition} to={url} style={link}>
                 <ListItem button>
                   <ListItemIcon>
                     <Home />
@@ -185,7 +213,11 @@ class App extends Component {
                 </ListItem>
               </Link>
 
-              <Link to={url + "skills"} style={link}>
+              <Link
+                onClick={this.handleTransition}
+                to={url + "skills"}
+                style={link}
+              >
                 <ListItem button>
                   <ListItemIcon>
                     <Code />
@@ -194,7 +226,11 @@ class App extends Component {
                 </ListItem>
               </Link>
 
-              <Link to={url + "contact"} style={link}>
+              <Link
+                onClick={this.handleTransition}
+                to={url + "contact"}
+                style={link}
+              >
                 <ListItem button>
                   <ListItemIcon>
                     <Mail />
@@ -206,7 +242,11 @@ class App extends Component {
 
             <Divider />
             <List>
-              <Link to={url + "settings"} style={link}>
+              <Link
+                onClick={this.handleTransition}
+                to={url + "settings"}
+                style={link}
+              >
                 <ListItem button>
                   <ListItemIcon>
                     <Settings />
