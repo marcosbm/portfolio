@@ -11,8 +11,8 @@ const container = {
   backgroundSize: "cover",
   height: "100%",
   width: "100%",
-  padding: 15,
-  position: "fixed"
+  position: "fixed",
+  bottom: 0
 };
 
 const text = {
@@ -20,49 +20,52 @@ const text = {
   color: "rgb(255, 255, 255)",
   font: "30px Helvetica, Sans-Serif",
   padding: 10,
-  margin: 10,
-  backgroundColor: "rgb(175, 175, 175, 0.7)"
+  borderLeft: "3px solid rgb(0, 0, 0, 0.7)",
+  backgroundColor: "rgb(175, 175, 175, 0.7)",
+  position: "relative",
+  top: 140
+};
+
+const textPc = {
+  font: "30px Helvetica, Sans-Serif",
+  marginLeft: '20%',
 };
 
 const textMobile = {
-  textAlign: "left",
-  color: "rgb(255, 255, 255)",
   font: "20px Helvetica, Sans-Serif",
-  padding: 10,
-  margin: 10,
-  backgroundColor: "rgb(175, 175, 175, 0.7)"
+  marginLeft: 30,
 };
 
 const title = {
   display: "inline",
   position: "relative",
-  font: "200px Helvetica, Sans-Serif",
   letterSpacing: "-5px",
-  color: "rgba(0,0,255,0.6)"
+  color: "rgba(0,0,255,0.6)",
+  marginTop: 10,
+  top: 70
+};
+
+const titlePc = {
+  font: "200px Helvetica, Sans-Serif"
+};
+
+const titleMobile = {
+  font: "110px Helvetica, Sans-Serif"
 };
 
 const titleAfter = {
   content: "Hello",
   position: "absolute",
-  left: "10px",
   top: "5px",
   color: "rgba(255,0,0,0.6)"
 };
 
-const titleMobile = {
-  display: "inline",
-  position: "relative",
-  font: "110px Helvetica, Sans-Serif",
-  letterSpacing: "-5px",
-  color: "rgba(0,0,255,0.6)"
+const titleAfterPc = {
+  left: "10px"
 };
 
 const titleAfterMobile = {
-  content: "Hello",
-  position: "absolute",
-  left: "6px",
-  top: "5px",
-  color: "rgba(255,0,0,0.6)"
+  left: "6px"
 };
 
 class HomeScreen extends Component {
@@ -73,16 +76,17 @@ class HomeScreen extends Component {
   }
 
   title = (titleStyle, titleAfterStyle) => {
+
     return (
       <div>
-        <h1 style={titleStyle}>
+        <h1 style={{...title, ...titleStyle}}>
           Hello
-          <span style={titleAfterStyle}>Hello</span>
+          <span style={{...titleAfter, ...titleAfterStyle}}>Hello</span>
         </h1>
         <br />
-        <h1 style={titleStyle}>
+        <h1 style={{...title, ...titleStyle}}>
           world!
-          <span style={titleAfterStyle}>world!</span>
+          <span style={{...titleAfter, ...titleAfterStyle}}>world!</span>
         </h1>
       </div>
     );
@@ -97,7 +101,7 @@ class HomeScreen extends Component {
             {matches =>
               matches
                 ? this.title(titleMobile, titleAfterMobile)
-                : this.title(title, titleAfter)
+                : this.title(titlePc, titleAfterPc)
             }
           </Media>
         </div>
@@ -105,12 +109,12 @@ class HomeScreen extends Component {
         <Media query="(max-width: 599px)">
           {matches =>
             matches ? (
-              <div style={textMobile}>
+              <div style={{...text, ...textMobile}}>
                 I´m Marcos Bustamante,<br /> Software developer <br />Based in
                 Seville
               </div>
             ) : (
-              <div style={text}>
+              <div style={{...text, ...textPc}}>
                 I´m Marcos Bustamante,<br /> Software developer <br />Based in
                 Seville
               </div>
