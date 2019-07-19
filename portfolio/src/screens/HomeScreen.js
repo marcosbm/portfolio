@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Spinner from "../components/Spinner";
 import Media from "react-media";
 import backgroundHome from './../backgroundHome.jpg';
 
@@ -96,7 +95,6 @@ class HomeScreen extends Component {
   render() {
     return (
       <div className="Home ScreenContainer" style={container}>
-        {/*<Spinner duration={5} /> */}
         <div>
           <Media query="(max-width: 599px)">
             {matches =>

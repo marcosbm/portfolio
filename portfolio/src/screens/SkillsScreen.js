@@ -3,7 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import SkillImage from "./../components/SkillImage";
 
 const skillPaper = {
-  maxWidth: "60%",
+  maxWidth: "70%",
   marginLeft: "auto",
   marginRight: "auto",
   padding: 7,
@@ -114,7 +114,6 @@ class SkillsScreen extends Component {
   render() {
     return (
       <div className="Skills ScreenContainer">
-        <h1>Skills</h1>
 
         {dataSkills.map(skill => (
           <div key={skill.title}>

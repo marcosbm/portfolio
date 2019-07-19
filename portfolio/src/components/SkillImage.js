@@ -52,27 +52,23 @@ class SkillImage extends Component {
     this.setState({ hover: !this.state.hover });
   };
 
-  handleLink = () => {
-    const { href } = this.props;
-    window.open(href);
-  }
-
   render() {
     const { hover } = this.state;
-    const { name, src } = this.props;
+    const { name, src, href } = this.props;
 
     return (
       <div
         style={hover ? { ...imgContainer, ...imgContainerHover } : imgContainer}
         onMouseEnter={this.handleHover}
         onMouseLeave={this.handleHover}
-        onClick={this.handleLink}
       >
-        <img
-          src={src}
-          alt={name + " logo"}
-          style={hover ? { ...img, ...imgHover } : img}
-        />
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          <img
+            src={src}
+            alt={name + " logo"}
+            style={hover ? { ...img, ...imgHover } : img}
+          />
+        </a>
         <br />
 
         <b style={hover ? titleHover : title}>{name.toUpperCase()}</b>

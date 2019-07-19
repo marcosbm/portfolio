@@ -15,15 +15,18 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Home from "@material-ui/icons/Home";
 import Code from "@material-ui/icons/Code";
-import Settings from "@material-ui/icons/Settings";
 import Mail from "@material-ui/icons/Mail";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import ShareIcon from "@material-ui/icons/Share";
 
 // Screens
 import HomeScreen from "../screens/HomeScreen";
 import SkillsScreen from "./../screens/SkillsScreen";
 import ProfileScreen from "./../screens/ProfileScreen";
 import ContactScreen from "./../screens/ContactScreen";
+
+// Components
+import ShareModal from "./ShareModal";
 
 const url = "/";
 
@@ -83,14 +86,15 @@ const logo = {
 
 const link = { textDecoration: "none" };
 
-class App extends Component {
+class NavBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       open: false,
       barStyle: bar,
-      routeStyle: route
+      routeStyle: route,
+      openShareModal: false
     };
   }
 
@@ -130,6 +134,11 @@ class App extends Component {
     }
   };
 
+  handleShareModal = () => {
+
+    this.setState({ openShareModal : !this.state.openShareModal});
+  }
+
   componentDidMount() {
     setInterval(() => {
       this.setState({
@@ -143,7 +152,7 @@ class App extends Component {
   }
 
   render() {
-    const { barStyle, routeStyle } = this.state;
+    const { barStyle, routeStyle, openShareModal } = this.state;
 
     return (
       <Router>
@@ -179,6 +188,8 @@ class App extends Component {
               </Media>
             </Toolbar>
           </AppBar>
+
+          <ShareModal open={openShareModal} handleClose={this.handleShareModal} />
 
           <Drawer
             variant="temporary"
@@ -242,18 +253,12 @@ class App extends Component {
 
             <Divider />
             <List>
-              <Link
-                onClick={this.handleTransition}
-                to={url + "settings"}
-                style={link}
-              >
-                <ListItem button>
-                  <ListItemIcon>
-                    <Settings />
-                  </ListItemIcon>
-                  <ListItemText primary={"Settings"} />
-                </ListItem>
-              </Link>
+              <ListItem button onClick={this.handleShareModal}>
+                <ListItemIcon>
+                  <ShareIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Share"} />
+              </ListItem>
             </List>
             <Divider />
           </Drawer>
@@ -269,4 +274,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default NavBar;
