@@ -12,7 +12,7 @@ class ShareButtons extends Component {
       <span>
         <a
           className="resp-sharing-button__link"
-          href="whatsapp://send?text=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.%20https%3A%2F%2Fmarcosbustamantemateo.com"
+          href="https://api.whatsapp.com/send?text=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.%20https%3A%2F%2Fmarcosbustamantemateo.com"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp"
