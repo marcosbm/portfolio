@@ -7,12 +7,17 @@ const paper = {
   marginRight: "auto",
   padding: 7,
   boxShadow: "0 5px 10px 0 #2C3335",
-  marginBottom: 15
+  marginBottom: 25,
+  transition: "transform .3s",
+  background: "linear-gradient(45deg, #000000, #434343)",
+  color: "rgb(238, 237, 237)",
+  borderRadius: 5,
 };
 
 const paperHover = {
-  backgroundColor: "#2C3335",
-  color: "rgb(238, 237, 237)"
+  background: "linear-gradient(45deg, #2C3335, #434343)",
+  transition: "transform .3s",
+  transform: "scale(1.1)"
 };
 
 const text = {
@@ -60,7 +65,7 @@ class ContactCard extends Component {
         <Grid container spacing={8}>
           <Grid item xs={12}>
             <h3>{title.toUpperCase()}</h3>
-            <Divider style={hover ? dividerHover : null} />
+            <Divider style={hover ? dividerHover : dividerHover} />
           </Grid>
 
           <Grid item xs={3}>

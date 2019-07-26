@@ -5,16 +5,16 @@ const imgContainer = {
   textAlign: "center",
   height: 170,
   width: 170,
-  maxWidth: "80%",
+  maxWidth: "70%",
   borderRadius: "100%",
   display: "inline-block",
-  backgroundColor: "rgb(238, 237, 237)",
+  background: "rgb(238, 237, 237)",
   transition: "transform .6s",
   padding: 5
 };
 
 const imgContainerHover = {
-  backgroundColor: "#2C3335",
+  background: "linear-gradient(45deg, #2C3335, #434343)",
   transition: "transform .3s",
   transform: "scale(1.1)"
 };

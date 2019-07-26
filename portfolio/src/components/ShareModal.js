@@ -26,7 +26,7 @@ class ShareModal extends Component {
         aria-describedby="alert-dialog-slide-description"
         style={modal}
       >
-        <h3>Share via</h3>
+        <h3>SHARE VIA</h3>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             <span>

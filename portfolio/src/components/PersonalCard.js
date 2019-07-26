@@ -1,29 +1,69 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import React, { Component } from "react";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 
- const PersonalCard = (props) => {
+const container = { 
+    display: "inline-block",
+    margin: 10 
+};
 
+const card = { 
+    maxWidth: 500, 
+    maxHeight: 800, 
+    borderRadius: "15px"
+ };
+
+const img = { 
+    maxHeight: 170, 
+    borderRadius: "100%", 
+    marginTop: 10 
+};
+
+const text = {
+    textIndent: "1em"
+};
+
+class PersonalCard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  render() {
     return (
-        <div style={{ display: 'inline-block', margin: 10 }}>
-            <Card raised={true} style={{ maxWidth: 500, maxHeight: 800, borderRadius: '15px'}}>
-                <CardActionArea>
-                    <img src={ require('./../photo.png') } alt="marcos bustamante mateo logo" style={{ maxHeight: 150, borderRadius: '50%', marginTop: 10 }} />
-                    <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        Marcos Bustamante Mateo
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p" style={{ textIndent: '1em' }}>
-                        I am Software developer. Based in Spain with a great focus on creating clean & user friendly code. <br/>
-                        Let me show you more about me.
-                    </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </div>
+      <div style={container}>
+        <Card
+          raised={true}
+          style={card}
+        >
+          <CardActionArea>
+            <img
+              src={require("./../photo.png")}
+              alt="marcos bustamante mateo logo"
+              style={img}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                Marcos Bustamante Mateo
+              </Typography>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component="p"
+                style={text}
+              >
+                I am Software developer with a great focus on
+                creating clean & user friendly code.
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </div>
     );
+  }
 }
 
 export default PersonalCard;

@@ -9,6 +9,10 @@ class ProfileScreen extends Component {
         this.state = {};
     }
 
+    componentDidMount() {
+        document.title = 'MBM - Profile';
+      }
+
     render() {
         return(
             <div className='Profile ScreenContainer'>

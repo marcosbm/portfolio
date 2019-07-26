@@ -135,9 +135,8 @@ class NavBar extends Component {
   };
 
   handleShareModal = () => {
-
-    this.setState({ openShareModal : !this.state.openShareModal});
-  }
+    this.setState({ openShareModal: !this.state.openShareModal });
+  };
 
   componentDidMount() {
     setInterval(() => {
@@ -172,7 +171,7 @@ class NavBar extends Component {
                 <MenuIcon style={menuIcon} />
               </IconButton>
 
-              <Link to={url}>
+              <Link to={url} onClick={this.handleTransition}>
                 <img
                   src={require("./../logo.png")}
                   alt="marcos bustamante mateo logo"
@@ -189,7 +188,10 @@ class NavBar extends Component {
             </Toolbar>
           </AppBar>
 
-          <ShareModal open={openShareModal} handleClose={this.handleShareModal} />
+          <ShareModal
+            open={openShareModal}
+            handleClose={this.handleShareModal}
+          />
 
           <Drawer
             variant="temporary"
@@ -197,6 +199,7 @@ class NavBar extends Component {
             open={this.state.open}
             onClose={() => {}}
             transitionDuration={500}
+            className="Ancho"
           >
             <List>
               <Link

@@ -18,7 +18,7 @@ class App extends Component {
 
     return (
         <div className="App">
-            <Navbar style={{overflowX: 'hidden'}}></Navbar>
+            <Navbar></Navbar>
             <FloatButtons></FloatButtons>
         </div>
     );

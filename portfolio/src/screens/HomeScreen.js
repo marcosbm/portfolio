@@ -92,6 +92,10 @@ class HomeScreen extends Component {
     );
   };
 
+  componentDidMount() {
+    document.title = 'Marcos Bustamante Mateo';
+  }
+
   render() {
     return (
       <div className="Home ScreenContainer" style={container}>

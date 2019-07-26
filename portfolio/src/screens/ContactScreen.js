@@ -38,6 +38,9 @@ class ContactScreen extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    document.title = "MBM - Contact";
+  }
 
   render() {
     return (
@@ -45,9 +48,23 @@ class ContactScreen extends Component {
         {data.map(item => (
           <Media query="(max-width: 1025px)" key={item.title}>
             {matches =>
-              matches
-                ? <ContactCard title={item.title} src={item.src} content={item.content} href={item.href} paperStyle={paperMobile}  />
-                : <ContactCard title={item.title} src={item.src} content={item.content} href={item.href} paperStyle={paperPc}  />
+              matches ? (
+                <ContactCard
+                  title={item.title}
+                  src={item.src}
+                  content={item.content}
+                  href={item.href}
+                  paperStyle={paperMobile}
+                />
+              ) : (
+                <ContactCard
+                  title={item.title}
+                  src={item.src}
+                  content={item.content}
+                  href={item.href}
+                  paperStyle={paperPc}
+                />
+              )
             }
           </Media>
         ))}

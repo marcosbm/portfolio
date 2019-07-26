@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
 import SkillImage from "./../components/SkillImage";
 
 const skillPaper = {
@@ -7,12 +6,14 @@ const skillPaper = {
   marginLeft: "auto",
   marginRight: "auto",
   padding: 7,
-  boxShadow: '0 5px 10px 0'
+  boxShadow: '0 5px 10px 0',
+  borderRadius: 5,
 };
 
 const skillTypeTitle = {
-  backgroundColor: "rgb(34,141,255)",
-  marginTop: 10
+  background: "linear-gradient(45deg, #000000, #434343)",
+  marginTop: 10,
+  color: "rgb(238, 237, 237)"
 };
 
 const skillTypeContent = {
@@ -111,20 +112,24 @@ class SkillsScreen extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    document.title = 'MBM - Skills';
+  }
+
   render() {
     return (
       <div className="Skills ScreenContainer">
 
         {dataSkills.map(skill => (
           <div key={skill.title}>
-            <Paper style={{ ...skillPaper, ...skillTypeTitle }}>
+            <div style={{ ...skillPaper, ...skillTypeTitle }}>
               <h3>{skill.title}</h3>
-            </Paper>
-            <Paper style={{ ...skillPaper, ...skillTypeContent }}>
+            </div>
+            <div style={{ ...skillPaper, ...skillTypeContent }}>
               {skill.img.map(imgItem => (
                 <SkillImage key={imgItem.name} name={imgItem.name} src={imgItem.src} href={imgItem.href} />
               ))}
-            </Paper>
+            </div>
           </div>
         ))}
       </div>
