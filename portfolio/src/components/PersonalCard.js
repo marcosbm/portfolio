@@ -15,13 +15,13 @@ const card = {
     borderRadius: "15px"
  };
 
-const img = { 
+const imgStyle = { 
     maxHeight: 170, 
     borderRadius: "100%", 
     marginTop: 10 
 };
 
-const text = {
+const textStyle = {
     textIndent: "1em"
 };
 
@@ -33,6 +33,9 @@ class PersonalCard extends Component {
   }
 
   render() {
+
+    const { src, name, text } = this.props;
+
     return (
       <div style={container}>
         <Card
@@ -41,22 +44,21 @@ class PersonalCard extends Component {
         >
           <CardActionArea>
             <img
-              src={require("./../photo.png")}
+              src={src}
               alt="marcos bustamante mateo logo"
-              style={img}
+              style={imgStyle}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Marcos Bustamante Mateo
+                {name}
               </Typography>
               <Typography
                 variant="body2"
                 color="textSecondary"
                 component="p"
-                style={text}
+                style={textStyle}
               >
-                I am Software developer with a great focus on
-                creating clean & user friendly code.
+                {text}
               </Typography>
             </CardContent>
           </CardActionArea>

@@ -1,26 +1,20 @@
 import React, { Component } from "react";
 import Navbar from "./components/Navbar";
-import FloatButtons from './components/FloatButtons';
+import FloatButtons from "./components/FloatButtons";
 
 class App extends Component {
   constructor() {
     super();
 
-    this.state = { };
-  }  
-
-  componentDidMount () {
-
+    this.state = {};
   }
 
   render() {
-
-
     return (
-        <div className="App">
-            <Navbar></Navbar>
-            <FloatButtons></FloatButtons>
-        </div>
+      <div className="App">
+        <Navbar />
+        <FloatButtons />
+      </div>
     );
   }
 }
