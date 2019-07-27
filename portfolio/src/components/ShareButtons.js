@@ -12,7 +12,7 @@ class ShareButtons extends Component {
       <span>
         <a
           className="resp-sharing-button__link"
-          href="https://api.whatsapp.com/send?text=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.%20https%3A%2F%2Fmarcosbustamantemateo.com"
+          href="https://api.whatsapp.com/send?text=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.%20https%3A%2F%2Fwww.marcosbustamantemateo.com"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp"
@@ -31,7 +31,7 @@ class ShareButtons extends Component {
         </a>
         <a
           className="resp-sharing-button__link"
-          href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmarcosbustamantemateo.com"
+          href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.marcosbustamantemateo.com"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"
@@ -51,7 +51,7 @@ class ShareButtons extends Component {
 
         <a
           className="resp-sharing-button__link"
-          href="https://telegram.me/share/url?text=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.&amp;url=https%3A%2F%2Fmarcosbustamantemateo.com"
+          href="https://telegram.me/share/url?text=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.&amp;url=https%3A%2F%2Fwww.marcosbustamantemateo.com"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Telegram"
@@ -71,7 +71,7 @@ class ShareButtons extends Component {
 
         <a
           className="resp-sharing-button__link"
-          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fmarcosbustamantemateo.com&amp;title=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.&amp;summary=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.&amp;source=https%3A%2F%2Fmarcosbustamantemateo.com"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fmarcosbustamantemateo.com&amp;title=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.&amp;summary=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.&amp;source=https%3A%2F%2Fwww.marcosbustamantemateo.com"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
@@ -91,7 +91,7 @@ class ShareButtons extends Component {
 
         <a
           className="resp-sharing-button__link"
-          href="https://twitter.com/intent/tweet/?text=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.&amp;url=https%3A%2F%2Fmarcosbustamantemateo.com"
+          href="https://twitter.com/intent/tweet/?text=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.&amp;url=https%3A%2F%2Fwww.marcosbustamantemateo.com"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Twitter"
@@ -111,7 +111,7 @@ class ShareButtons extends Component {
 
         <a
           className="resp-sharing-button__link"
-          href="mailto:?subject=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.&amp;body=https%3A%2F%2Fmarcosbustamantemateo.com"
+          href="mailto:?subject=Check%20out%20the%20new%20web%20of%20Marcos%20Bustamante%20Mateo%2C%20software%20developer.&amp;body=https%3A%2F%2Fwww.marcosbustamantemateo.com"
           target="_self"
           rel="noopener"
           aria-label="E-Mail"
