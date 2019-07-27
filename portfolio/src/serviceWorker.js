@@ -31,29 +31,17 @@ export function register(config) {
       return;
     }
 
-    const CACHE_NAME = 'mbm';
-    const URLS_TO_CACHE = [
-      '/',
-      '/index.html',
-      '.'
-    ];
-
-    window.addEventListener('install', event => {
+    window.addEventListener('activate', (event) => {
       event.waitUntil(
-        caches.open(CACHE_NAME)
-          .then(cache => {
-            return cache.addAll(URLS_TO_CACHE);
-          })
-      );
-    });
-
-    window.addEventListener('fetch', event => {
-      event.respondWith(
-        caches.match(event.request)
-          .then(response => {
-              return response ? response : fetch(event.request);
-          }
-        )
+        caches.keys().then(cacheNames => {
+          return Promise.all(
+            cacheNames.filter(cacheName => {
+              return true;
+            }).map(cacheName => {
+              return caches.delete(cacheName);
+            })
+          );
+        })
       );
     });
 
@@ -160,4 +148,3 @@ export function unregister() {
   }
 }
 
-register();
