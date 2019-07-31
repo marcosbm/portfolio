@@ -173,7 +173,7 @@ class NavBar extends Component {
 
               <Link to={url} onClick={this.handleTransition}>
                 <img
-                  src={require("./../logo.png")}
+                  src={require("./../images/logo.png")}
                   alt="marcos bustamante mateo logo"
                   style={logo}
                 />

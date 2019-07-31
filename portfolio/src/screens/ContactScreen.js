@@ -14,19 +14,19 @@ const data = [
   {
     title: "whatsapp",
     content: "+34 634 454 350",
-    src: require("./../whatsapp.png"),
+    src: require("./../images/whatsapp.png"),
     href: "https://api.whatsapp.com/send?phone=34634454350"
   },
   {
     title: "gmail",
     content: "marcosbustamantemateo@gmail.com",
-    src: require("./../gmail.png"),
+    src: require("./../images/gmail.png"),
     href: "mailto:marcosbustamantemateo@gmail.com"
   },
   {
     title: "linkedin",
     content: "All about my work experience",
-    src: require("./../linkedin.png"),
+    src: require("./../images/linkedin.png"),
     href: "https://www.linkedin.com/in/marcos-bustamante/"
   }
 ];

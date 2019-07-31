@@ -6,8 +6,8 @@ const skillPaper = {
   marginLeft: "auto",
   marginRight: "auto",
   padding: 7,
-  boxShadow: '0 5px 10px 0',
-  borderRadius: 5,
+  boxShadow: "0 5px 10px 0",
+  borderRadius: 5
 };
 
 const skillTypeTitle = {
@@ -28,17 +28,17 @@ const dataSkills = [
     img: [
       {
         name: "spring",
-        src: require("./../spring.png"),
+        src: require("./../images/spring.png"),
         href: "https://spring.io/"
       },
       {
         name: "asp .net",
-        src: require("./../dotnet.png"),
+        src: require("./../images/dotnet.png"),
         href: "https://dotnet.microsoft.com/apps/aspnet"
       },
       {
         name: "node js",
-        src: require("./../nodejs.png"),
+        src: require("./../images/nodejs.png"),
         href: "https://nodejs.org"
       }
     ]
@@ -48,7 +48,7 @@ const dataSkills = [
     img: [
       {
         name: "graphql",
-        src: require("./../graphql.svg"),
+        src: require("./../images/graphql.svg"),
         href: "https://graphql.org"
       }
     ]
@@ -58,17 +58,17 @@ const dataSkills = [
     img: [
       {
         name: "react",
-        src: require("./../react.svg"),
+        src: require("./../images/react.svg"),
         href: "https://reactjs.org"
       },
       {
         name: "angular",
-        src: require("./../angular.svg"),
+        src: require("./../images/angular.svg"),
         href: "https://angular.io"
       },
       {
         name: "redux",
-        src: require("./../redux.png"),
+        src: require("./../images/redux.png"),
         href: "https://redux.js.org/"
       }
     ]
@@ -78,12 +78,12 @@ const dataSkills = [
     img: [
       {
         name: "git",
-        src: require("./../git.png"),
+        src: require("./../images/git.png"),
         href: "https://git-scm.com/"
       },
       {
         name: "subversion",
-        src: require("./../svn.png"),
+        src: require("./../images/svn.png"),
         href: "https://subversion.apache.org/"
       }
     ]
@@ -93,12 +93,12 @@ const dataSkills = [
     img: [
       {
         name: "xamarin",
-        src: require("./../xamarin.png"),
+        src: require("./../images/xamarin.png"),
         href: "https://xamarin.com"
       },
       {
         name: "react native",
-        src: require("./../react.svg"),
+        src: require("./../images/react.svg"),
         href: "https://facebook.github.io/react-native/"
       }
     ]
@@ -113,13 +113,12 @@ class SkillsScreen extends Component {
   }
 
   componentDidMount() {
-    document.title = 'MBM - Skills';
+    document.title = "MBM - Skills";
   }
 
   render() {
     return (
       <div className="Skills ScreenContainer">
-
         {dataSkills.map(skill => (
           <div key={skill.title}>
             <div style={{ ...skillPaper, ...skillTypeTitle }}>
@@ -127,7 +126,12 @@ class SkillsScreen extends Component {
             </div>
             <div style={{ ...skillPaper, ...skillTypeContent }}>
               {skill.img.map(imgItem => (
-                <SkillImage key={imgItem.name} name={imgItem.name} src={imgItem.src} href={imgItem.href} />
+                <SkillImage
+                  key={imgItem.name}
+                  name={imgItem.name}
+                  src={imgItem.src}
+                  href={imgItem.href}
+                />
               ))}
             </div>
           </div>

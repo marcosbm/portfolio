@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Media from "react-media";
-import backgroundHome from './../backgroundHome.jpg';
+import backgroundHome from './../images/backgroundHome.jpg';
 
 const container = {
   backgroundImage:
