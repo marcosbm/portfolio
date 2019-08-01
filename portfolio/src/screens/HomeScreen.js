@@ -17,21 +17,19 @@ const container = {
 const text = {
   textAlign: "left",
   color: "rgb(255, 255, 255)",
-  font: "30px Helvetica, Sans-Serif",
   padding: 10,
-  borderLeft: "3px solid rgb(0, 0, 0, 0.7)",
   backgroundColor: "rgb(175, 175, 175, 0.7)",
   position: "relative",
   top: 140
 };
 
 const textPc = {
-  font: "30px Helvetica, Sans-Serif",
-  marginLeft: "20%"
+  font: "30px Permanent Marker, cursive",
+  marginLeft: "30%"
 };
 
 const textMobile = {
-  font: "20px Helvetica, Sans-Serif",
+  font: "20px Permanent Marker, cursive",
   marginLeft: 30
 };
 
@@ -45,11 +43,11 @@ const title = {
 };
 
 const titlePc = {
-  font: "200px Helvetica, Sans-Serif"
+  font: "200px Lacquer, sans-serif"
 };
 
 const titleMobile = {
-  font: "110px Helvetica, Sans-Serif"
+  font: "110px Lacquer, sans-serif"
 };
 
 const titleAfter = {

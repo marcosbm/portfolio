@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import SkillImage from "./../components/SkillImage";
-import { Slide } from "@material-ui/core";
 import Media from "react-media";
 
 const skillPaper = {
@@ -31,8 +30,6 @@ const skillTypeContent = {
   marginBottom: 20,
   marginTop: 10
 };
-
-let intervalId = 0;
 
 const dataSkills = [
   {
@@ -121,9 +118,7 @@ class SkillsScreen extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      slide: false
-    };
+    this.state = {};
   }
 
   skills = (skillPaperStyle, skillPaperDevice, slide) => {
@@ -131,47 +126,32 @@ class SkillsScreen extends Component {
       <div className="Skills ScreenContainer">
         {dataSkills.map(skill => (
           <div key={skill.title}>
-            <Slide
-              direction="left"
-              in={slide}
-              timeout={3000}
-              mountOnEnter
-              unmountOnExit
+            <div
+              style={{
+                ...skillPaperStyle,
+                ...skillPaperDevice,
+                ...skillTypeTitle
+              }}
             >
-              <div
-                style={{
-                  ...skillPaperStyle,
-                  ...skillPaperDevice,
-                  ...skillTypeTitle
-                }}
-              >
-                <h3>{skill.title}</h3>
-              </div>
-            </Slide>
-            <Slide
-              direction="right"
-              in={slide}
-              timeout={3000}
-              mountOnEnter
-              unmountOnExit
+              <h3>{skill.title}</h3>
+            </div>
+
+            <div
+              style={{
+                ...skillPaperStyle,
+                ...skillPaperDevice,
+                ...skillTypeContent
+              }}
             >
-              <div
-                style={{
-                  ...skillPaperStyle,
-                  ...skillPaperDevice,
-                  ...skillTypeContent
-                }}
-              >
-                {skill.img.map(imgItem => (
-                  <SkillImage
-                    key={imgItem.name}
-                    name={imgItem.name}
-                    src={imgItem.src}
-                    href={imgItem.href}
-                  />
-                ))}
-              </div>
-            </Slide>
+              {skill.img.map(imgItem => (
+                <SkillImage
+                  key={imgItem.name}
+                  name={imgItem.name}
+                  src={imgItem.src}
+                  href={imgItem.href}
+                />
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -180,11 +160,6 @@ class SkillsScreen extends Component {
 
   componentDidMount() {
     document.title = "MBM - Skills";
-    intervalId = setInterval(() => this.setState({ slide: true }), 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(intervalId);
   }
 
   render() {

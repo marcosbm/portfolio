@@ -58,7 +58,7 @@ class ProfileScreen extends Component {
     const { slide } = this.state;
 
     return (
-      <div className="Profile ScreenContainer">
+      <div style={{ overflow: 'hidden' }} className="Profile ScreenContainer">
         <Slide
           direction="down"
           in={slide}
@@ -82,10 +82,10 @@ class ProfileScreen extends Component {
           mountOnEnter
           unmountOnExit
         >
-          <h2>Testimonials</h2>
+          <h2 style={{fontFamily: 'Permanent Marker, cursive'}}>Testimonials</h2>
         </Slide>
         {dataTestimonials.map(item => (
-          <Grid key={item.name} container spacing={8}>
+          <Grid key={item.name} container spacing={0}>
             <Grid item xs={12}>
               <Slide
                 direction="up"

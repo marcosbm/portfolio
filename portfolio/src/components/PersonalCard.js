@@ -22,10 +22,6 @@ const imgStyle = {
   marginTop: 10
 };
 
-const textStyle = {
-  textIndent: "1em"
-};
-
 class PersonalCard extends Component {
   constructor(props) {
     super(props);
@@ -46,14 +42,13 @@ class PersonalCard extends Component {
               style={imgStyle}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography gutterBottom variant="h5" component="h2" style={{fontFamily: 'Walter Turncoat, cursive'}}>
                 {name}
               </Typography>
               <Typography
                 variant="body2"
                 color="textSecondary"
                 component="p"
-                style={textStyle}
               >
                 {quote ? <QuoteIcon /> : null}
                 {quote ? <i>{text}</i> : text}
