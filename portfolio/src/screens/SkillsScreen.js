@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import SkillImage from "./../components/SkillImage";
+import { Slide } from "@material-ui/core";
+import Media from "react-media";
 
 const skillPaper = {
   maxWidth: "70%",
@@ -8,6 +10,14 @@ const skillPaper = {
   padding: 7,
   boxShadow: "0 5px 10px 0",
   borderRadius: 5
+};
+
+const skillPaperMobile = {
+  maxWidth: "70%"
+};
+
+const skillPaperPc = {
+  maxWidth: "50%"
 };
 
 const skillTypeTitle = {
@@ -21,6 +31,8 @@ const skillTypeContent = {
   marginBottom: 20,
   marginTop: 10
 };
+
+let intervalId = 0;
 
 const dataSkills = [
   {
@@ -109,34 +121,83 @@ class SkillsScreen extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      slide: false
+    };
   }
 
-  componentDidMount() {
-    document.title = "MBM - Skills";
-  }
-
-  render() {
+  skills = (skillPaperStyle, skillPaperDevice, slide) => {
     return (
       <div className="Skills ScreenContainer">
         {dataSkills.map(skill => (
           <div key={skill.title}>
-            <div style={{ ...skillPaper, ...skillTypeTitle }}>
-              <h3>{skill.title}</h3>
-            </div>
-            <div style={{ ...skillPaper, ...skillTypeContent }}>
-              {skill.img.map(imgItem => (
-                <SkillImage
-                  key={imgItem.name}
-                  name={imgItem.name}
-                  src={imgItem.src}
-                  href={imgItem.href}
-                />
-              ))}
-            </div>
+            <Slide
+              direction="left"
+              in={slide}
+              timeout={3000}
+              mountOnEnter
+              unmountOnExit
+            >
+              <div
+                style={{
+                  ...skillPaperStyle,
+                  ...skillPaperDevice,
+                  ...skillTypeTitle
+                }}
+              >
+                <h3>{skill.title}</h3>
+              </div>
+            </Slide>
+            <Slide
+              direction="right"
+              in={slide}
+              timeout={3000}
+              mountOnEnter
+              unmountOnExit
+            >
+              <div
+                style={{
+                  ...skillPaperStyle,
+                  ...skillPaperDevice,
+                  ...skillTypeContent
+                }}
+              >
+                {skill.img.map(imgItem => (
+                  <SkillImage
+                    key={imgItem.name}
+                    name={imgItem.name}
+                    src={imgItem.src}
+                    href={imgItem.href}
+                  />
+                ))}
+              </div>
+            </Slide>
           </div>
         ))}
       </div>
+    );
+  };
+
+  componentDidMount() {
+    document.title = "MBM - Skills";
+    intervalId = setInterval(() => this.setState({ slide: true }), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(intervalId);
+  }
+
+  render() {
+    const { slide } = this.state;
+
+    return (
+      <Media query="(max-width: 1025px)">
+        {matches =>
+          matches
+            ? this.skills(skillPaper, skillPaperMobile, slide)
+            : this.skills(skillPaper, skillPaperPc, slide)
+        }
+      </Media>
     );
   }
 }

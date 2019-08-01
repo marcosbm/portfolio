@@ -81,7 +81,13 @@ const opacityTransitionRoute = {
 
 const logo = {
   maxHeight: 45,
-  borderRadius: 50
+  borderRadius: 50,
+  transition: "transform .4s"
+};
+
+const logoClickedStyle = {
+  transition: "transform .3s",
+  transform: "scale(0.85)"
 };
 
 const link = { textDecoration: "none" };
@@ -94,7 +100,8 @@ class NavBar extends Component {
       open: false,
       barStyle: bar,
       routeStyle: route,
-      openShareModal: false
+      openShareModal: false,
+      logoClicked: false
     };
   }
 
@@ -138,6 +145,10 @@ class NavBar extends Component {
     this.setState({ openShareModal: !this.state.openShareModal });
   };
 
+  handleLogoClicked = () => {
+    this.setState({ logoClicked: !this.state.logoClicked });
+  };
+
   componentDidMount() {
     setInterval(() => {
       this.setState({
@@ -151,7 +162,7 @@ class NavBar extends Component {
   }
 
   render() {
-    const { barStyle, routeStyle, openShareModal } = this.state;
+    const { barStyle, routeStyle, openShareModal, logoClicked } = this.state;
 
     return (
       <Router>
@@ -175,7 +186,9 @@ class NavBar extends Component {
                 <img
                   src={require("./../images/logo.png")}
                   alt="marcos bustamante mateo logo"
-                  style={logo}
+                  style={logoClicked ? { ...logo, ...logoClickedStyle } : logo}
+                  onMouseDown={this.handleLogoClicked}
+                  onMouseUp={this.handleLogoClicked}
                 />
               </Link>
               <Media query="(max-width: 599px)">

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import Media from "react-media";
-import backgroundHome from './../images/backgroundHome.jpg';
+import backgroundHome from "./../images/backgroundHome.jpg";
 
 const container = {
-  backgroundImage:
-    "url(" + backgroundHome + ")",
+  backgroundImage: "url(" + backgroundHome + ")",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center center",
   backgroundAttachment: "fixed",
@@ -28,12 +27,12 @@ const text = {
 
 const textPc = {
   font: "30px Helvetica, Sans-Serif",
-  marginLeft: '20%',
+  marginLeft: "20%"
 };
 
 const textMobile = {
   font: "20px Helvetica, Sans-Serif",
-  marginLeft: 30,
+  marginLeft: 30
 };
 
 const title = {
@@ -76,24 +75,33 @@ class HomeScreen extends Component {
   }
 
   title = (titleStyle, titleAfterStyle) => {
-
     return (
       <div>
-        <h1 style={{...title, ...titleStyle}}>
+        <h1 style={{ ...title, ...titleStyle }}>
           Hello
-          <span style={{...titleAfter, ...titleAfterStyle}}>Hello</span>
+          <span style={{ ...titleAfter, ...titleAfterStyle }}>Hello</span>
         </h1>
         <br />
-        <h1 style={{...title, ...titleStyle}}>
+        <h1 style={{ ...title, ...titleStyle }}>
           world!
-          <span style={{...titleAfter, ...titleAfterStyle}}>world!</span>
+          <span style={{ ...titleAfter, ...titleAfterStyle }}>world!</span>
         </h1>
       </div>
     );
   };
 
+  text = (textStyle, textStyleDevice) => {
+    return (
+      <div style={{ ...textStyle, ...textStyleDevice }}>
+        I´m Marcos Bustamante,
+        <br /> Software developer <br />
+        Based in Seville
+      </div>
+    );
+  };
+
   componentDidMount() {
-    document.title = 'Marcos Bustamante Mateo';
+    document.title = "Marcos Bustamante Mateo";
   }
 
   render() {
@@ -111,17 +119,7 @@ class HomeScreen extends Component {
 
         <Media query="(max-width: 599px)">
           {matches =>
-            matches ? (
-              <div style={{...text, ...textMobile}}>
-                I´m Marcos Bustamante,<br /> Software developer <br />Based in
-                Seville
-              </div>
-            ) : (
-              <div style={{...text, ...textPc}}>
-                I´m Marcos Bustamante,<br /> Software developer <br />Based in
-                Seville
-              </div>
-            )
+            matches ? this.text(text, textMobile) : this.text(text, textPc)
           }
         </Media>
       </div>

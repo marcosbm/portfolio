@@ -3,26 +3,27 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import QuoteIcon from "@material-ui/icons/FormatQuoteSharp";
 
-const container = { 
-    display: "inline-block",
-    margin: 10 
+const container = {
+  display: "inline-block",
+  margin: 10
 };
 
-const card = { 
-    maxWidth: 500, 
-    maxHeight: 800, 
-    borderRadius: "15px"
- };
+const card = {
+  maxWidth: 500,
+  maxHeight: 800,
+  borderRadius: "15px"
+};
 
-const imgStyle = { 
-    maxHeight: 170, 
-    borderRadius: "100%", 
-    marginTop: 10 
+const imgStyle = {
+  maxHeight: 170,
+  borderRadius: "100%",
+  marginTop: 10
 };
 
 const textStyle = {
-    textIndent: "1em"
+  textIndent: "1em"
 };
 
 class PersonalCard extends Component {
@@ -33,15 +34,11 @@ class PersonalCard extends Component {
   }
 
   render() {
-
-    const { src, name, text } = this.props;
+    const { src, name, text, quote } = this.props;
 
     return (
       <div style={container}>
-        <Card
-          raised={true}
-          style={card}
-        >
+        <Card raised={true} style={card}>
           <CardActionArea>
             <img
               src={src}
@@ -58,7 +55,9 @@ class PersonalCard extends Component {
                 component="p"
                 style={textStyle}
               >
-                {text}
+                {quote ? <QuoteIcon /> : null}
+                {quote ? <i>{text}</i> : text}
+                {quote ? <QuoteIcon /> : null}
               </Typography>
             </CardContent>
           </CardActionArea>
