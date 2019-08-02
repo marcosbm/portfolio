@@ -4,11 +4,10 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
-import ShareButtons from "./ShareButtons";
 
 const modal = { textAlign: "center" };
 
-class ShareModal extends Component {
+class CopyModal extends Component {
   constructor(props) {
     super(props);
 
@@ -26,11 +25,11 @@ class ShareModal extends Component {
         aria-describedby="alert-dialog-slide-description"
         style={modal}
       >
-        <h3>SHARE VIA</h3>
+        <h3>DO NOT COPY</h3>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             <span>
-              <ShareButtons />
+              Copy content is not allowed
             </span>
           </DialogContentText>
         </DialogContent>
@@ -44,4 +43,4 @@ class ShareModal extends Component {
   }
 }
 
-export default ShareModal;
+export default CopyModal;
