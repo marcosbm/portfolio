@@ -45,9 +45,22 @@ class ProfileScreen extends Component {
     this.setState({ seconds: this.state.seconds + 1, slide: true });
   };
 
+  handleScroll = () => {
+    const opinionContainer = document.getElementById("opinion");
+
+    if (opinionContainer !== null) {
+      if (window.pageYOffset > opinionContainer.offsetTop) {
+        console.log('SCROLL');
+      } else {
+        console.log('NO SCROLL');
+      }
+    }
+  }
+
   componentDidMount() {
     document.title = "MBM - Profile";
     intervalId = setInterval(() => this.handleTimer(), 1000);
+    window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
@@ -58,7 +71,7 @@ class ProfileScreen extends Component {
     const { slide } = this.state;
 
     return (
-      <div style={{ overflow: 'hidden' }} className="Profile ScreenContainer">
+      <div style={{ overflow: 'hidden' }} className="Profile ScreenContainer" onScroll={this.handleScroll}>
         <Slide
           direction="down"
           in={slide}
@@ -85,7 +98,7 @@ class ProfileScreen extends Component {
           <h2 style={{fontFamily: 'Permanent Marker, cursive'}}>Testimonials</h2>
         </Slide>
         {dataTestimonials.map(item => (
-          <Grid key={item.name} container spacing={0}>
+          <Grid id="opinion" key={item.name} container spacing={0}>
             <Grid item xs={12}>
               <Slide
                 direction="up"

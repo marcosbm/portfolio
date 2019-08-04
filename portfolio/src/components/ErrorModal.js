@@ -7,7 +7,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 
 const modal = { textAlign: "center" };
 
-class CopyModal extends Component {
+class ErrorModal extends Component {
   constructor(props) {
     super(props);
 
@@ -15,7 +15,7 @@ class CopyModal extends Component {
   }
 
   render() {
-    const { open, handleClose } = this.props;
+    const { title, text, open, handleClose } = this.props;
 
     return (
       <Dialog
@@ -25,11 +25,11 @@ class CopyModal extends Component {
         aria-describedby="alert-dialog-slide-description"
         style={modal}
       >
-        <h3>DO NOT COPY</h3>
+        <h3 style={{padding: 10}}>{title}</h3>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             <span>
-              Copy content is not allowed
+              {text}
             </span>
           </DialogContentText>
         </DialogContent>
@@ -43,4 +43,4 @@ class CopyModal extends Component {
   }
 }
 
-export default CopyModal;
+export default ErrorModal;
