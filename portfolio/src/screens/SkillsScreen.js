@@ -31,6 +31,10 @@ const skillTypeContent = {
   marginTop: 10
 };
 
+const skillName = {
+  fontFamily: 'Walter Turncoat, cursive'
+};
+
 const dataSkills = [
   {
     title: "BACKEND",
@@ -133,7 +137,7 @@ class SkillsScreen extends Component {
                 ...skillTypeTitle
               }}
             >
-              <h3>{skill.title}</h3>
+              <h3 style={skillName}>{skill.title}</h3>
             </div>
 
             <div

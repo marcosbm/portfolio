@@ -37,13 +37,14 @@ const title = {
   display: "inline",
   position: "relative",
   letterSpacing: "-5px",
-  color: "rgba(0,0,255,0.6)",
+  color: "rgba(0,0,255, 0.8)",
   marginTop: 10,
-  top: 70
+  top: 70,
+  textShadow: '-1px 0 rgb(0, 0, 0), 0 1px rgb(0, 0, 0), 1px 0 rgb(0, 0, 0), 0 -1px rgb(0, 0, 0)'
 };
 
 const titlePc = {
-  font: "200px Lacquer, sans-serif"
+  font: "300px Lacquer, sans-serif"
 };
 
 const titleMobile = {
@@ -54,7 +55,7 @@ const titleAfter = {
   content: "Hello",
   position: "absolute",
   top: "5px",
-  color: "rgba(255,0,0,0.6)"
+  color: "rgba(255,0,0, 0.8)"
 };
 
 const titleAfterPc = {

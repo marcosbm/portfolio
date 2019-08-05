@@ -35,6 +35,10 @@ const dividerHover = {
   backgroundColor: "rgb(238, 237, 237)"
 };
 
+const titleStyle = {
+  fontFamily: 'Walter Turncoat, cursive'
+};
+
 class ContactCard extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +68,7 @@ class ContactCard extends Component {
       >
         <Grid container spacing={8}>
           <Grid item xs={12}>
-            <h3>{title.toUpperCase()}</h3>
+            <h3 style={titleStyle}>{title.toUpperCase()}</h3>
             <Divider style={hover ? dividerHover : dividerHover} />
           </Grid>
 

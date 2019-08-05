@@ -92,6 +92,12 @@ const logoClickedStyle = {
 
 const link = { textDecoration: "none" };
 
+const titleNavBar = {
+  margin: 'auto',
+  fontFamily: "Permanent Marker, cursive",
+  textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
+};
+
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -194,7 +200,7 @@ class NavBar extends Component {
               <Media query="(max-width: 599px)">
                 {matches =>
                   matches ? null : (
-                    <h4 style={{ margin: "auto" }}>Marcos Bustamante Mateo</h4>
+                    <h2 style={titleNavBar}>Marcos Bustamante Mateo</h2>
                   )
                 }
               </Media>

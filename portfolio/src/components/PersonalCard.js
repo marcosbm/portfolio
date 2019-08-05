@@ -22,6 +22,10 @@ const imgStyle = {
   marginTop: 10
 };
 
+const nameStyle = {
+  fontFamily: 'Walter Turncoat, cursive'
+};
+
 class PersonalCard extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +46,7 @@ class PersonalCard extends Component {
               style={imgStyle}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2" style={{fontFamily: 'Walter Turncoat, cursive'}}>
+              <Typography gutterBottom variant="h5" component="h2" style={nameStyle}>
                 {name}
               </Typography>
               <Typography

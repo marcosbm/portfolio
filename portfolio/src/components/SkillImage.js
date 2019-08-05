@@ -26,9 +26,10 @@ const img = {
   margin: 15,
   transition: "transform .6s"
 };
+
 const imgHover = {
-  transition: "transform .6s",
-  transform: "scale(1.1) rotate(360deg)"
+  transition: "transform .3s",
+  transform: "scale(1.1)"
 };
 
 const title = {

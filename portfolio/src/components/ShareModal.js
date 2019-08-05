@@ -8,6 +8,8 @@ import ShareButtons from "./ShareButtons";
 
 const modal = { textAlign: "center" };
 
+const title = { fontFamily: 'Walter Turncoat, cursive' };
+
 class ShareModal extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +28,7 @@ class ShareModal extends Component {
         aria-describedby="alert-dialog-slide-description"
         style={modal}
       >
-        <h3>SHARE VIA</h3>
+        <h2 style={title}>SHARE VIA</h2>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             <span>
