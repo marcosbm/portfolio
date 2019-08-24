@@ -18,6 +18,11 @@ code {
   height: 100%;
 }
 
+.timeline {
+  padding-top: 0;
+  padding-bottom: 0
+}
+
 .resp-sharing-button__link,
 .resp-sharing-button__icon {
   display: inline-block

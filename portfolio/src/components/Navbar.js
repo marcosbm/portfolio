@@ -1,32 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Media from "react-media";
-
-// Material UI
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Drawer from "@material-ui/core/Drawer";
-import Divider from "@material-ui/core/Divider";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import Home from "@material-ui/icons/Home";
-import Code from "@material-ui/icons/Code";
-import Mail from "@material-ui/icons/Mail";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import ShareIcon from "@material-ui/icons/Share";
-
-// Screens
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import HomeScreen from "../screens/HomeScreen";
 import SkillsScreen from "./../screens/SkillsScreen";
 import ProfileScreen from "./../screens/ProfileScreen";
 import ContactScreen from "./../screens/ContactScreen";
-
-// Components
+import CvScreen from "./../screens/CvScreen";
 import ShareModal from "./ShareModal";
+import Header from "./Header";
+import Menu from "./Menu";
 
 const url = "/";
 
@@ -50,6 +31,10 @@ const routes = [
   {
     path: url + "settings",
     main: () => <HomeScreen />
+  },
+  {
+    path: url + "curriculum",
+    main: () => <CvScreen />
   }
 ];
 
@@ -59,12 +44,6 @@ const bar = {
   borderRadius: 0,
   opacity: 0,
   padding: 5
-};
-
-const menuIcon = {
-  borderRadius: 5,
-  color: "rgb(0, 0, 0)",
-  fontSize: 35
 };
 
 const opacityTransitionBar = {
@@ -77,25 +56,6 @@ const route = { opacity: 0 };
 const opacityTransitionRoute = {
   opacity: 1,
   transition: "opacity 5s"
-};
-
-const logo = {
-  maxHeight: 45,
-  borderRadius: 50,
-  transition: "transform .4s"
-};
-
-const logoClickedStyle = {
-  transition: "transform .3s",
-  transform: "scale(0.85)"
-};
-
-const link = { textDecoration: "none" };
-
-const titleNavBar = {
-  margin: 'auto',
-  fontFamily: "Permanent Marker, cursive",
-  textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
 };
 
 class NavBar extends Component {
@@ -168,7 +128,13 @@ class NavBar extends Component {
   }
 
   render() {
-    const { barStyle, routeStyle, openShareModal, logoClicked } = this.state;
+    const {
+      barStyle,
+      routeStyle,
+      openShareModal,
+      logoClicked,
+      open
+    } = this.state;
 
     return (
       <Router>
@@ -178,112 +144,24 @@ class NavBar extends Component {
             if (this.state.open) this.handlingDrawer();
           }}
         >
-          <AppBar color="secondary" position="fixed" style={barStyle}>
-            <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="Menu"
-                onClick={this.handlingDrawer}
-              >
-                <MenuIcon style={menuIcon} />
-              </IconButton>
+          <Header
+            url={url}
+            logoClicked={logoClicked}
+            barStyle={barStyle}
+            handlingDrawer={this.handlingDrawer}
+          />
 
-              <Link to={url} onClick={this.handleTransition}>
-                <img
-                  src={require("./../images/logo.png")}
-                  alt="marcos bustamante mateo logo"
-                  style={logoClicked ? { ...logo, ...logoClickedStyle } : logo}
-                  onMouseDown={this.handleLogoClicked}
-                  onMouseUp={this.handleLogoClicked}
-                />
-              </Link>
-              <Media query="(max-width: 599px)">
-                {matches =>
-                  matches ? null : (
-                    <h2 style={titleNavBar}>Marcos Bustamante Mateo</h2>
-                  )
-                }
-              </Media>
-            </Toolbar>
-          </AppBar>
+          <Menu
+            url={url}
+            handleTransition={this.handleTransition}
+            handleShareModal={this.handleShareModal}
+            open={open}
+          />
 
           <ShareModal
             open={openShareModal}
             handleClose={this.handleShareModal}
           />
-
-          <Drawer
-            variant="temporary"
-            anchor="left"
-            open={this.state.open}
-            onClose={() => {}}
-            transitionDuration={500}
-            className="Ancho"
-          >
-            <List>
-              <Link
-                onClick={this.handleTransition}
-                to={url + "profile"}
-                style={link}
-              >
-                <ListItem button>
-                  <ListItemIcon>
-                    <AccountCircle />
-                  </ListItemIcon>
-                  <ListItemText primary={"Profile"} />
-                </ListItem>
-              </Link>
-            </List>
-
-            <Divider />
-            <List>
-              <Link onClick={this.handleTransition} to={url} style={link}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <Home />
-                  </ListItemIcon>
-                  <ListItemText primary={"Home"} />
-                </ListItem>
-              </Link>
-
-              <Link
-                onClick={this.handleTransition}
-                to={url + "skills"}
-                style={link}
-              >
-                <ListItem button>
-                  <ListItemIcon>
-                    <Code />
-                  </ListItemIcon>
-                  <ListItemText primary={"Skills"} />
-                </ListItem>
-              </Link>
-
-              <Link
-                onClick={this.handleTransition}
-                to={url + "contact"}
-                style={link}
-              >
-                <ListItem button>
-                  <ListItemIcon>
-                    <Mail />
-                  </ListItemIcon>
-                  <ListItemText primary={"Contact"} />
-                </ListItem>
-              </Link>
-            </List>
-
-            <Divider />
-            <List>
-              <ListItem button onClick={this.handleShareModal}>
-                <ListItemIcon>
-                  <ShareIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Share"} />
-              </ListItem>
-            </List>
-            <Divider />
-          </Drawer>
 
           <div style={routeStyle}>
             {routes.map((route, index) => (

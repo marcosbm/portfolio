@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Fab from "@material-ui/core/Fab";
 import CallIcon from "@material-ui/icons/Call";
-import EmailIcon from "@material-ui/icons/Email";
+import EmailIcon from "@material-ui/icons/Textsms";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 
@@ -44,7 +44,7 @@ class FloatButtons extends Component {
   handleContact = () => {
     const { mobile } = this.state;
     window.location.href = mobile
-      ? "tel:+34645506946"
+      ? "tel:+34634454350"
       : "mailto:marcosbustamantemateo@gmail.com";
   };
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Media from "react-media";
 import backgroundHome from "./../images/backgroundHome.jpg";
+import WelcomeWords from "../components/WelcomeWords";
 
 const container = {
   backgroundImage: "url(" + backgroundHome + ")",
@@ -33,29 +34,12 @@ const textMobile = {
   marginLeft: 30
 };
 
-const title = {
-  display: "inline",
-  position: "relative",
-  letterSpacing: "-5px",
-  color: "rgba(0,0,255, 0.8)",
-  marginTop: 10,
-  top: 70,
-  textShadow: '-1px 0 rgb(0, 0, 0), 0 1px rgb(0, 0, 0), 1px 0 rgb(0, 0, 0), 0 -1px rgb(0, 0, 0)'
-};
-
 const titlePc = {
-  font: "300px Lacquer, sans-serif"
+  font: "200px Lacquer, sans-serif"
 };
 
 const titleMobile = {
   font: "110px Lacquer, sans-serif"
-};
-
-const titleAfter = {
-  content: "Hello",
-  position: "absolute",
-  top: "5px",
-  color: "rgba(255,0,0, 0.8)"
 };
 
 const titleAfterPc = {
@@ -72,22 +56,6 @@ class HomeScreen extends Component {
 
     this.state = {};
   }
-
-  title = (titleStyle, titleAfterStyle) => {
-    return (
-      <div>
-        <h1 style={{ ...title, ...titleStyle }}>
-          Hello
-          <span style={{ ...titleAfter, ...titleAfterStyle }}>Hello</span>
-        </h1>
-        <br />
-        <h1 style={{ ...title, ...titleStyle }}>
-          world!
-          <span style={{ ...titleAfter, ...titleAfterStyle }}>world!</span>
-        </h1>
-      </div>
-    );
-  };
 
   text = (textStyle, textStyleDevice) => {
     return (
@@ -110,8 +78,8 @@ class HomeScreen extends Component {
           <Media query="(max-width: 599px)">
             {matches =>
               matches
-                ? this.title(titleMobile, titleAfterMobile)
-                : this.title(titlePc, titleAfterPc)
+                ? <WelcomeWords titleStyle={titleMobile}  titleAfterStyle={titleAfterMobile} />
+                : <WelcomeWords titleStyle={titlePc}  titleAfterStyle={titleAfterPc} />
             }
           </Media>
         </div>

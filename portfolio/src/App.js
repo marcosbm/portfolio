@@ -14,29 +14,24 @@ class App extends Component {
   }
 
   handleCopyModal = () => {
-    this.handleModals(false, false);
-  };
-
-  handleRightClickModal = () => {
-    this.handleModals(false, false);
+    this.handleModal(false);
   };
 
   handleCopy = event => {
     event.preventDefault();
-    this.handleModals(true, false);
+    this.handleModal(true);
   };
 
-  handleRightClick = event => {
-    event.preventDefault();
-    this.handleModals(false, true)
-  };
+  handleModal = (value) => {
+    this.setState({ openCopyModal: value });
+  }
 
-  handleModals = (copy, right) => {
-    this.setState({ openRightButton: right, openCopyModal: copy });
+  componentDidMount() {
+
   }
 
   render() {
-    const { openCopyModal, openRightButton } = this.state;
+    const { openCopyModal } = this.state;
 
     return (
       <div
@@ -51,12 +46,6 @@ class App extends Component {
           handleClose={this.handleCopyModal}
         />
 
-        <ErrorModal
-          title={'DO NOT CLICK RIGHT BUTTON'}
-          text={'Right button is not allowed'}
-          open={openRightButton}
-          handleClose={this.handleRightClickModal}
-        />
         <Navbar />
         <FloatButtons />
       </div>

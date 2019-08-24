@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import { Slide } from "@material-ui/core";
 
 const title = {
-    fontFamily: "Permanent Marker, cursive" 
+  fontFamily: "Permanent Marker, cursive"
 };
 
 class Testimonials extends Component {
@@ -13,8 +13,6 @@ class Testimonials extends Component {
 
     this.state = {};
   }
-
-  componentWillUnmount() {}
 
   render() {
     const { data, slide } = this.props;
@@ -28,10 +26,9 @@ class Testimonials extends Component {
           mountOnEnter
           unmountOnExit
         >
-          <h2 style={title}>
-            Testimonials
-          </h2>
+          <h2 style={title}>Testimonials</h2>
         </Slide>
+        <br />
         {data.map(item => (
           <Grid id="opinion" key={item.name} container spacing={0}>
             <Grid item xs={12}>

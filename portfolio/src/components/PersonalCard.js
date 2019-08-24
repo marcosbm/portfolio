@@ -4,6 +4,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import QuoteIcon from "@material-ui/icons/FormatQuoteSharp";
+import Media from "react-media";
 
 const container = {
   display: "inline-block",
@@ -16,6 +17,14 @@ const card = {
   borderRadius: "15px"
 };
 
+const sizeMobile = {
+  minWidth: 0
+};
+
+const sizePc = {
+  minWidth: 500
+};
+
 const imgStyle = {
   maxHeight: 170,
   borderRadius: "100%",
@@ -23,7 +32,7 @@ const imgStyle = {
 };
 
 const nameStyle = {
-  fontFamily: 'Walter Turncoat, cursive'
+  fontFamily: "Walter Turncoat, cursive"
 };
 
 class PersonalCard extends Component {
@@ -33,34 +42,52 @@ class PersonalCard extends Component {
     this.state = {};
   }
 
-  render() {
+  breakLineText = text => {
+    let newText = text.split("\n").map((item, i) => {
+      return (
+        <span style={{textAlign: 'left'}} key={i}>
+          {item}
+          <br />
+        </span>
+      );
+    });
+
+    return newText;
+  };
+
+  card = style => {
     const { src, name, text, quote } = this.props;
 
     return (
+      <Card raised={true} style={{ ...card, ...style }}>
+        <CardActionArea>
+          <img src={src} alt="marcos bustamante mateo logo" style={imgStyle} />
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h2"
+              style={nameStyle}
+            >
+              {name}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {quote ? <QuoteIcon /> : null}
+              {quote ? <i>{text}</i> : this.breakLineText(text)}
+              {quote ? <QuoteIcon /> : null}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    );
+  };
+
+  render() {
+    return (
       <div style={container}>
-        <Card raised={true} style={card}>
-          <CardActionArea>
-            <img
-              src={src}
-              alt="marcos bustamante mateo logo"
-              style={imgStyle}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2" style={nameStyle}>
-                {name}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-              >
-                {quote ? <QuoteIcon /> : null}
-                {quote ? <i>{text}</i> : text}
-                {quote ? <QuoteIcon /> : null}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+        <Media query="(max-width: 599px)">
+          {matches => (matches ? this.card(sizeMobile) : this.card(sizePc))}
+        </Media>
       </div>
     );
   }
