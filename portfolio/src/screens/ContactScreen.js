@@ -25,7 +25,7 @@ const data = [
   },
   {
     title: "linkedin",
-    content: "All about my work experience",
+    content: "www.linkedin.com/in/marcos-bustamante",
     src: require("./../images/linkedin.png"),
     href: "https://www.linkedin.com/in/marcos-bustamante/"
   }

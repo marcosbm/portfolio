@@ -11,7 +11,7 @@ const paper = {
   transition: "transform .3s",
   background: "linear-gradient(45deg, #000000, #434343)",
   color: "rgb(238, 237, 237)",
-  borderRadius: 5,
+  borderRadius: 5
 };
 
 const paperHover = {
@@ -36,8 +36,13 @@ const dividerHover = {
 };
 
 const titleStyle = {
-  fontFamily: 'Walter Turncoat, cursive'
+  fontFamily: "Walter Turncoat, cursive"
 };
+
+const linkStyle = {
+  textDecoration: 'none',
+  color: 'rgb(238, 237, 237)'
+}
 
 class ContactCard extends Component {
   constructor(props) {
@@ -66,6 +71,7 @@ class ContactCard extends Component {
         onMouseEnter={this.handleHover}
         onMouseLeave={this.handleHover}
       >
+        <a href={href} target="_blank" rel="noopener noreferrer" style={linkStyle}>
         <Grid container spacing={8}>
           <Grid item xs={12}>
             <h3 style={titleStyle}>{title.toUpperCase()}</h3>
@@ -73,18 +79,13 @@ class ContactCard extends Component {
           </Grid>
 
           <Grid item xs={3}>
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
               <img src={src} alt={"logo of " + title} style={img} />
-            </a>
           </Grid>
           <Grid item xs={9}>
-            <p style={text}>{content}</p>
+              <p style={text}>{content}</p>
           </Grid>
         </Grid>
+        </a>
       </div>
     );
   }
