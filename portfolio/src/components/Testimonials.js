@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PersonalCard from "../components/PersonalCard";
 import Grid from "@material-ui/core/Grid";
 import { Slide } from "@material-ui/core";
+import { withTranslation } from 'react-i18next';
 
 const title = {
   fontFamily: "Permanent Marker, cursive"
@@ -26,7 +27,7 @@ class Testimonials extends Component {
           mountOnEnter
           unmountOnExit
         >
-          <h2 style={title}>Testimonials</h2>
+          <h2 style={title}>{this.props.t('profile.testimonials.title')}</h2>
         </Slide>
         <br />
         {data.map(item => (
@@ -42,7 +43,7 @@ class Testimonials extends Component {
                 <PersonalCard
                   src={item.src}
                   name={item.name}
-                  text={item.textEnglish}
+                  text={this.props.t(item.keyText)}
                   quote={true}
                 />
               </Slide>
@@ -54,4 +55,4 @@ class Testimonials extends Component {
   }
 }
 
-export default Testimonials;
+export default withTranslation('common')(Testimonials);

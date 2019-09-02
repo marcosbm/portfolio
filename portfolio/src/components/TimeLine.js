@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
 import { Slide } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import { withTranslation } from 'react-i18next';
 
 const titleStyle = {
   fontFamily: "Permanent Marker, cursive",
@@ -52,7 +53,7 @@ class TimeLine extends Component {
           <Timeline className="timeline" lineColor={"#ddd"}>
             {data.map(item => (
               <TimelineItem
-                key={item.text}
+                key={item.textKey}
                 dateText={item.date}
                 style={{ color: "#e86971" }}
                 bodyContainerStyle={{
@@ -61,9 +62,9 @@ class TimeLine extends Component {
                   boxShadow: "0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2)"
                 }}
               >
-                <h3>{item.title}</h3>
-                <h6>{item.subtitle}</h6>
-                {this.breakLineText(item.text)}
+                <h3>{this.props.t(item.title)}</h3>
+                <h6>{this.props.t(item.subtitleKey)}</h6>
+                {this.breakLineText(this.props.t(item.textKey))}
               </TimelineItem>
             ))}
           </Timeline>
@@ -73,4 +74,4 @@ class TimeLine extends Component {
   }
 }
 
-export default TimeLine;
+export default withTranslation('common')(TimeLine);

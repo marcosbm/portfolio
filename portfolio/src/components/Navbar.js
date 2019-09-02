@@ -149,6 +149,7 @@ class NavBar extends Component {
             logoClicked={logoClicked}
             barStyle={barStyle}
             handlingDrawer={this.handlingDrawer}
+            handleTransition={this.handleTransition}
           />
 
           <Menu

@@ -4,6 +4,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
+import { withTranslation } from 'react-i18next';
 
 const modal = { textAlign: "center" };
 
@@ -35,7 +36,7 @@ class ErrorModal extends Component {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="secondary">
-            Close
+          {this.props.t('modal.close')}
           </Button>
         </DialogActions>
       </Dialog>
@@ -43,4 +44,4 @@ class ErrorModal extends Component {
   }
 }
 
-export default ErrorModal;
+export default withTranslation('common')(ErrorModal);

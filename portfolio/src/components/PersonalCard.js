@@ -5,6 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import QuoteIcon from "@material-ui/icons/FormatQuoteSharp";
 import Media from "react-media";
+import { withTranslation } from 'react-i18next';
 
 const container = {
   display: "inline-block",
@@ -93,4 +94,4 @@ class PersonalCard extends Component {
   }
 }
 
-export default PersonalCard;
+export default withTranslation('common')(PersonalCard);

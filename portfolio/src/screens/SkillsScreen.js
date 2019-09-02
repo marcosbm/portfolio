@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SkillImage from "./../components/SkillImage";
 import Media from "react-media";
+import { withTranslation } from 'react-i18next';
 
 const skillPaper = {
   maxWidth: "70%",
@@ -37,7 +38,7 @@ const skillName = {
 
 const dataSkills = [
   {
-    title: "BACKEND",
+    title: "skills.backend",
     img: [
       {
         name: "spring",
@@ -57,7 +58,7 @@ const dataSkills = [
     ]
   },
   {
-    title: "API ARCHITECTURE",
+    title: "skills.apiArc",
     img: [
       {
         name: "graphql",
@@ -67,7 +68,7 @@ const dataSkills = [
     ]
   },
   {
-    title: "FRONTEND",
+    title: "skills.frontend",
     img: [
       {
         name: "react",
@@ -87,7 +88,7 @@ const dataSkills = [
     ]
   },
   {
-    title: "CONTROL VERSION",
+    title: "skills.versionControl",
     img: [
       {
         name: "git",
@@ -102,7 +103,7 @@ const dataSkills = [
     ]
   },
   {
-    title: "CROSS PLATAFORM MOBILE",
+    title: "skills.mobile",
     img: [
       {
         name: "xamarin",
@@ -137,7 +138,7 @@ class SkillsScreen extends Component {
                 ...skillTypeTitle
               }}
             >
-              <h3 style={skillName}>{skill.title}</h3>
+              <h3 style={skillName}>{this.props.t(skill.title)}</h3>
             </div>
 
             <div
@@ -181,4 +182,4 @@ class SkillsScreen extends Component {
   }
 }
 
-export default SkillsScreen;
+export default withTranslation('common')(SkillsScreen);

@@ -4,6 +4,7 @@ import CallIcon from "@material-ui/icons/Call";
 import EmailIcon from "@material-ui/icons/Textsms";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
+import { withTranslation } from 'react-i18next';
 
 const opacityTransition = {
   opacity: 1,
@@ -80,9 +81,8 @@ class FloatButtons extends Component {
 
     return (
       <div>
-
         <Tooltip
-          title={mobile ? "Call" : "Text"}
+          title={mobile ? this.props.t("tooltip.call") : this.props.t("tooltip.text")}
           placement="left"
           TransitionComponent={Zoom}
           open={tootlTipVisible}
@@ -104,4 +104,4 @@ class FloatButtons extends Component {
   }
 }
 
-export default FloatButtons;
+export default withTranslation('common')(FloatButtons);

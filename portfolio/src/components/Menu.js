@@ -12,6 +12,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import ShareIcon from "@material-ui/icons/Share";
 import InsertDriveFile from "@material-ui/icons/InsertDriveFile";
 import { Link } from "react-router-dom";
+import { withTranslation } from 'react-i18next';
 
 const link = { textDecoration: "none" };
 
@@ -35,66 +36,54 @@ class Menu extends Component {
         className="Ancho"
       >
         <List>
-          <Link
-            onClick={handleTransition}
-            to={url + "profile"}
-            style={link}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <AccountCircle />
-              </ListItemIcon>
-              <ListItemText primary={"Profile"} />
-            </ListItem>
-          </Link>
-          {/*<Link
-                onClick={this.handleTransition}
-                to={url + "curriculum"}
-                style={link}
-              >
-                <ListItem button>
-                  <ListItemIcon>
-                    <InsertDriveFile />
-                  </ListItemIcon>
-                  <ListItemText primary={"My CV"} />
-                </ListItem>
-              </Link>*/}
-        </List>
-
-        <Divider />
-        <List>
           <Link onClick={handleTransition} to={url} style={link}>
             <ListItem button>
               <ListItemIcon>
                 <Home />
               </ListItemIcon>
-              <ListItemText primary={"Home"} />
+              <ListItemText primary={this.props.t('menu.home')} />
+            </ListItem>
+          </Link>
+        </List>
+
+        <Divider />
+        <List>
+          <Link onClick={handleTransition} to={url + "profile"} style={link}>
+            <ListItem button>
+              <ListItemIcon>
+                <AccountCircle />
+              </ListItemIcon>
+              <ListItemText primary={this.props.t('menu.profile')} />
+            </ListItem>
+          </Link>
+          <Link
+            onClick={this.handleTransition}
+            to={url + "curriculum"}
+            style={link}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <InsertDriveFile />
+              </ListItemIcon>
+              <ListItemText primary={this.props.t('menu.cv')} />
             </ListItem>
           </Link>
 
-          <Link
-            onClick={handleTransition}
-            to={url + "skills"}
-            style={link}
-          >
+          <Link onClick={handleTransition} to={url + "skills"} style={link}>
             <ListItem button>
               <ListItemIcon>
                 <Code />
               </ListItemIcon>
-              <ListItemText primary={"Skills"} />
+              <ListItemText primary={this.props.t('menu.skills')} />
             </ListItem>
           </Link>
 
-          <Link
-            onClick={handleTransition}
-            to={url + "contact"}
-            style={link}
-          >
+          <Link onClick={handleTransition} to={url + "contact"} style={link}>
             <ListItem button>
               <ListItemIcon>
                 <Mail />
               </ListItemIcon>
-              <ListItemText primary={"Contact"} />
+              <ListItemText primary={this.props.t('menu.contact')} />
             </ListItem>
           </Link>
         </List>
@@ -105,7 +94,7 @@ class Menu extends Component {
             <ListItemIcon>
               <ShareIcon />
             </ListItemIcon>
-            <ListItemText primary={"Share"} />
+            <ListItemText primary={this.props.t('menu.share')} />
           </ListItem>
         </List>
         <Divider />
@@ -114,4 +103,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default withTranslation('common')(Menu);

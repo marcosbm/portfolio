@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Media from "react-media";
 import backgroundHome from "./../images/backgroundHome.jpg";
 import WelcomeWords from "../components/WelcomeWords";
+import { withTranslation } from 'react-i18next';
 
 const container = {
   backgroundImage: "url(" + backgroundHome + ")",
@@ -51,6 +52,7 @@ const titleAfterMobile = {
 };
 
 class HomeScreen extends Component {
+  
   constructor(props) {
     super(props);
 
@@ -60,9 +62,9 @@ class HomeScreen extends Component {
   text = (textStyle, textStyleDevice) => {
     return (
       <div style={{ ...textStyle, ...textStyleDevice }}>
-        I´m Marcos Bustamante,
-        <br /> Software developer <br />
-        Based in Seville
+        {this.props.t('home.intro.name')}
+        <br /> {this.props.t('home.intro.profession')} <br />
+        {this.props.t('home.intro.location')}
       </div>
     );
   };
@@ -94,4 +96,4 @@ class HomeScreen extends Component {
   }
 }
 
-export default HomeScreen;
+export default withTranslation('common')(HomeScreen);

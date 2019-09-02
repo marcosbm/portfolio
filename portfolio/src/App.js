@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navbar from "./components/Navbar";
 import FloatButtons from "./components/FloatButtons";
 import ErrorModal from "./components/ErrorModal";
+import { withTranslation } from 'react-i18next';
 
 class App extends Component {
   constructor() {
@@ -40,8 +41,8 @@ class App extends Component {
         onContextMenu={this.handleRightClick}
       >
         <ErrorModal
-          title={'DO NOT COPY'}
-          text={'Copy content is not allowed'}
+          title={this.props.t('modal.copy.title').toUpperCase()}
+          text={this.props.t('modal.copy.content')}
           open={openCopyModal}
           handleClose={this.handleCopyModal}
         />
@@ -53,4 +54,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withTranslation('common')(App);

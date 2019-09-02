@@ -1,0 +1,87 @@
+{
+    "home": {
+        "welcome": {
+            "part1": "hola",
+            "part2": "mundo"
+        },
+        "intro": {
+            "name": "soy Marcos Bustamante,",
+            "profession": "desarrollador de software",
+            "location": "con sede en Sevilla"
+        }
+    },
+    "profile": {
+        "description": "Soy desarrollador de software con un gran enfoque en la creación de código limpio y fácil de usar. \n\nMe considero una persona muy apasionada de las tecnologías. Siempre trato de aprender algo nuevo. Creo que esto se debe a que no codifico solo por dinero o trabajo, especialmente lo hago por hobby porque me encanta. \n\nPuedo desarrollar tanto frontend como backend usando BFF, microservicios o GraphQL. Ahora estoy profundizando en el desarrollo de Java con Spring y Javascript con React y Angular. Estoy aprendiendo lenguajes como PHP y Python con frameworks como Laravel, Wordpress y Django. \nTambién me estoy preparando para la certificación Oracle OCA Java 8",
+        "experience": {
+            "title": "experiencia",
+            "fujitsu": {
+                "title": "Fujitsu",
+                "subtitle": "Desarrollador Full-Stack",
+                "text": "Durante este tiempo estuve desarrollando en Spring Boot, Spring Data, Spring Rest, JPA, Hibernate, QueryDSL y JUnit para Backend y React, Redux, CSS3 y HTML5 para Frontend."
+            },
+            "workana": {
+                "title": "Workana",
+                "subtitle": "Desarrollador Freelance",
+                "text": "Desarrollo y mantenimiento de cualquier solicitud de software del cliente."
+            },
+            "oesia": {
+                "title": "Grupo Oesia",
+                "subtitle": "Desarrollador Java",
+                "text": "Trabajando en framework basado en Java con tecnologías como Java EE, Java SWT, Spring Boot, JUnit, Mockito, Docker e ImDB (db2)."
+            }
+        },
+        "education": {
+            "title": "educación",
+            "everisOne": {
+                "title": "Everis Center Sevilla",
+                "subtitle": "Boot Camp Angular 6",
+                "text": "Aprendizaje y prácticas sobre Angular durante una semana."
+            },
+            "everisTwo": {
+                "title": "Everis Center Sevilla",
+                "subtitle": "Boot Camp .NET",
+                "text": "Aprendizaje y prácticas sobre el entorno .NET con C # durante dos semanas. Trabajando con tecnologías como SQL Server, ADO.NET, Entity Framework, Linq y ASP.NET."
+            },
+            "altair": {
+                "title": "Centro Educativo Altair",
+                "subtitle": "Formación Profesional Superior",
+                "text": "• Programación en Java, Node.js, Angular y .NET \n • Administración de bases de datos para SQL (Oracle, MySQL, SQLServer) y NoSQL (MongoDB) \n • Desarrollo de aplicaciones móviles en Android Studio \n • Sistemas Linux y administración de redes locales"
+            }
+        },
+        "testimonials": {
+            "title": "opiniones",
+            "fjr": "Marcos es una persona que siempre está investigando y buscando nuevas posibilidades para un proyecto, una garantía de estar siempre a la última tecnología. Muy trabajador cuando algo le apasiona. Gran compañero.",
+            "mco": "Apasionado del aprendizaje y el trabajo bien hecho, un gran compañero.",
+            "asc": "Gran profesional, buen compañero y apasionado de las tecnologías."
+        }
+    },
+    "skills": {
+        "backend": "SERVIDOR",
+        "apiArc": "ARQUITECTURA API",
+        "frontend": "CLIENTE",
+        "versionControl": "VERSIÓN CONTROL",
+        "mobile": "MÓVIL MULTIPLATAFORMA"
+    },
+    "modal": {
+        "close": "cerrar",
+        "copy": {
+            "title": "no copiar",
+            "content": "Copiar contenido no esta permitido"
+        },
+        "share": {
+            "title": "compartir via"
+        }
+    },
+    "menu": {
+        "home": "Inicio",
+        "profile": "Perfil",
+        "cv": "CV",
+        "skills": "Tecnologías",
+        "contact": "Contacto",
+        "share": "Compartir"
+    },
+    "tooltip": {
+        "text": "Escríbeme",
+        "call": "Llamar"
+    }
+}

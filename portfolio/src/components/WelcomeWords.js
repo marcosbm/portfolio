@@ -1,5 +1,6 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import { Keyframes, animated } from "react-spring/renderprops";
+import { withTranslation } from 'react-i18next';
 
 const Container = Keyframes.Spring(async next => {
   while (true) {
@@ -28,7 +29,7 @@ const titleAfter = {
   color: "rgba(255,0,0, 0.8)"
 };
 
-class WelcomeWords extends React.PureComponent {
+class WelcomeWords extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -39,13 +40,13 @@ class WelcomeWords extends React.PureComponent {
     return (
       <div>
         <h1 style={{ ...title, ...titleStyle }}>
-          Hello
-          <span style={{ ...titleAfter, ...titleAfterStyle }}>Hello</span>
+          {this.props.t('home.welcome.part1')}
+          <span style={{ ...titleAfter, ...titleAfterStyle }}>{this.props.t('home.welcome.part1')}</span>
         </h1>
         <br />
         <h1 style={{ ...title, ...titleStyle }}>
-          world!
-          <span style={{ ...titleAfter, ...titleAfterStyle }}>world!</span>
+        {this.props.t('home.welcome.part2')}
+          <span style={{ ...titleAfter, ...titleAfterStyle }}>{this.props.t('home.welcome.part2')}</span>
         </h1>
       </div>
     );
@@ -76,4 +77,4 @@ class WelcomeWords extends React.PureComponent {
   }
 }
 
-export default WelcomeWords;
+export default withTranslation('common')(WelcomeWords);
